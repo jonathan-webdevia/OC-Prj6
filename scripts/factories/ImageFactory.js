@@ -1,13 +1,14 @@
+/* eslint-disable class-methods-use-this */
 export default class ImageFactory {
-  // eslint-disable-next-line class-methods-use-this
-  createElmtHTML(object) {
+  
+  createGalleryElmt(object, src) {
     // const's media recovery
-    const { title, image, likes} = object;
+    const { id, title, image, likes } = object;
     // create the HTML element
     const article = document.createElement("article");
-    const imgSRC = `../../assets/images/mimi/${image}`;
+    article.setAttribute("data-id", id);
     const img = document.createElement("img");
-    img.setAttribute("src", imgSRC);
+    img.setAttribute("src", src + image);
 
     const imgDescription = document.createElement("div");
     imgDescription.setAttribute("class", "imgDescription");
@@ -16,7 +17,23 @@ export default class ImageFactory {
     titleP.textContent = title;
 
     const likesP = document.createElement("p");
-    likesP.innerHTML = `${likes} &#x2764;`;
+
+    const nbrLikes = document.createElement("span");
+    nbrLikes.setAttribute("class", "nbrLikes");
+    nbrLikes.textContent = `${likes} `;
+
+    const button = document.createElement("button");
+    button.setAttribute("type", "button");
+    button.setAttribute("class", "liker");
+    button.setAttribute("data-id", id);
+    button.setAttribute("data-like", false);
+
+    const heart = document.createElement("i");
+    heart.setAttribute("class", "fa-regular fa-heart");
+    button.appendChild(heart);
+
+    likesP.appendChild(nbrLikes);
+    likesP.appendChild(button);
 
     imgDescription.appendChild(titleP);
     imgDescription.appendChild(likesP);
@@ -25,5 +42,18 @@ export default class ImageFactory {
     article.appendChild(imgDescription);
 
     return article;
+  }
+
+  createLightBoxElmt(object, src) {
+    const mediaLightbox = document.querySelector("#lightBox .media");
+    mediaLightbox.innerHTML = "";
+    const image = document.createElement("img");
+    image.setAttribute("src", src + object.image);
+    image.setAttribute("class", "mediabloc");
+    const description = document.createElement("div");
+    description.textContent = object.title;
+
+    mediaLightbox.appendChild(image);
+    mediaLightbox.appendChild(description);
   }
 }

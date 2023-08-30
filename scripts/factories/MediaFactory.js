@@ -5,7 +5,9 @@ import VideoFactory from "./videoFactory.js";
 
 export default class MediaFactory {
   // media type checker & render HTML elmt
-  render(object) {
+  render(object, photographerName) {
+    const folderName = (photographerName.split(' ')[0]);
+    const src = `../../assets/images/${  folderName}/`;
     let factory = null;
     if (object.image) {
       factory = new ImageFactory();
@@ -13,6 +15,6 @@ export default class MediaFactory {
     if (object.video) {
       factory = new VideoFactory();
     }
-    return factory.createElmtHTML(object);
+    return factory.createGalleryElmt(object, src);
   }
 }
