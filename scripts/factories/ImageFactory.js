@@ -6,9 +6,10 @@ export default class ImageFactory {
     const { id, title, image, likes } = object;
     // create the HTML element
     const article = document.createElement("article");
-    article.setAttribute("data-id", id);
     const img = document.createElement("img");
     img.setAttribute("src", src + image);
+    img.setAttribute("class", "lightBoxBtn");
+    img.setAttribute("data-id", id);
 
     const imgDescription = document.createElement("div");
     imgDescription.setAttribute("class", "imgDescription");

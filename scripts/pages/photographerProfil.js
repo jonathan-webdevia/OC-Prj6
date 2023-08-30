@@ -32,12 +32,12 @@ const displayMedia = async (objects, photographerName) => {
 };
 
 const lightBoxProcess = async (objects, photographerName) => {
-  const articles = document.querySelectorAll(".media-container article");
+  const articles = document.querySelectorAll(".media-container article .lightBoxBtn");
   const lightbox = document.querySelector("#lightBox");
   articles.forEach(article => {
     article.addEventListener("click", () => {
       const idMedia = parseInt(article.dataset.id, 10);
-      lightbox.style.display = "block";
+      lightbox.style.display = "flex";
       for (let i = 0; i < objects.length; i++) {
         if(parseInt(objects[i].id, 10) === idMedia) {
           const lightBox = new LightBoxFactory();

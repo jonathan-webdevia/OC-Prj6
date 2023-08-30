@@ -8,6 +8,8 @@ export default class VideoFactory {
     article.setAttribute("data-id", id)
     const media = document.createElement("video");
     media.setAttribute("id", "video");
+    media.setAttribute("class", "lightBoxBtn");
+    media.setAttribute("data-id", id);
     const source = document.createElement("source");
     source.setAttribute("src", src + video);
     source.setAttribute("type", "video/mp4");

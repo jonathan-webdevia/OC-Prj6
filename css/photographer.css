@@ -73,6 +73,7 @@ main header img {
 .media-container article img:hover,
 .media-container article video:hover {
   transform: scale(1.1);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   transition: 500ms;
 }
 
@@ -92,6 +93,7 @@ main header img {
 
 /* Style lightBox */
 #lightBox {
+  padding: 40px 0;
   display: none;
   width: 100%;
   height: 100vh;
@@ -102,13 +104,22 @@ main header img {
 }
 
 #lightBox button {
+  width: 80px;
+  height: calc(100% - 2 * 40px);
+  text-align: center;
   font-size: 3em;
+  background-color: rgba(0, 0, 0, 0);
+  color: #901c1c;
+  background-color: none;
+  border: none;
+  cursor: pointer;
 }
 
 #lightBox .media .mediabloc {
-  width: 200px;
-  height: 200px;
+  width: calc(100vw - 2 * 80px);
+  height: calc(100% - 2 * 40px);
   object-fit: cover;
+  border-radius: 10px;
 }
 
 /* Style contact modal */
