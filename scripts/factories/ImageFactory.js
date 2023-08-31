@@ -45,15 +45,19 @@ export default class ImageFactory {
     return article;
   }
 
-  createLightBoxElmt(object, src) {
+  createLightBoxElmt(object, src, i, total) {
     const mediaLightbox = document.querySelector("#lightBox .media");
     mediaLightbox.innerHTML = "";
+    const counter = document.createElement("div");
+    counter.setAttribute("class", "counter");
+    counter.textContent = `${i  }/${  total}`;
     const image = document.createElement("img");
     image.setAttribute("src", src + object.image);
     image.setAttribute("class", "mediabloc");
     const description = document.createElement("div");
     description.textContent = object.title;
 
+    mediaLightbox.appendChild(counter);
     mediaLightbox.appendChild(image);
     mediaLightbox.appendChild(description);
   }

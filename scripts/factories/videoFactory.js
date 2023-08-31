@@ -49,9 +49,12 @@ export default class VideoFactory {
     return article;
   }
 
-  createLightBoxElmt(object, src) {
+  createLightBoxElmt(object, src, i, total) {
     const mediaLightbox = document.querySelector("#lightBox .media");
     mediaLightbox.innerHTML = "";
+    const counter = document.createElement("div");
+    counter.setAttribute("class", "counter");
+    counter.textContent = `${i  }/${  total}`;
     const video = document.createElement("video");
     video.setAttribute("class", "mediabloc");
     video.setAttribute("autoplay", "true");
@@ -63,6 +66,7 @@ export default class VideoFactory {
     const description = document.createElement("div");
     description.textContent = object.title;
 
+    mediaLightbox.appendChild(counter);
     mediaLightbox.appendChild(video);
     mediaLightbox.appendChild(description);
   }

@@ -46,6 +46,8 @@ const lightBoxProcess = async (objects, photographerName) => {
       }
     })
   })
+  const mediaCloseBtn = document.querySelector(".mediaClose");
+  mediaCloseBtn.addEventListener("click", () => { lightbox.style.display = "none"; })
 };
 
 const likesProcess = async (dailyPrice) => {

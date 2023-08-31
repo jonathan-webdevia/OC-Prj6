@@ -93,17 +93,32 @@ main header img {
 
 /* Style lightBox */
 #lightBox {
-  padding: 40px 0;
   display: none;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100vh;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
   z-index: 101;
   top: 0;
+  box-sizing: border-box;
+  backdrop-filter: blur(15px);
 }
 
-#lightBox button {
+#lightBox button.mediaClose {
+  color: #901c1c;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  font-size: 2em;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  cursor: pointer;
+}
+
+#lightBox button.control {
   width: 80px;
   height: calc(100% - 2 * 40px);
   text-align: center;
@@ -113,13 +128,40 @@ main header img {
   background-color: none;
   border: none;
   cursor: pointer;
+  text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#lightBox .media {
+  position: relative;
+  border-radius: 10px 10px 15px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
 }
 
 #lightBox .media .mediabloc {
-  width: calc(100vw - 2 * 80px);
-  height: calc(100% - 2 * 40px);
+  width: calc(80vw - 2 * 80px);
+  height: 30vw;
   object-fit: cover;
-  border-radius: 10px;
+  margin-bottom: -5px;
+}
+
+#lightBox .media div {
+  background-color: rgba(255, 0, 0, 0.2);
+  color: white;
+  font-size: 1.8em;
+  padding: 5px 10px;
+  margin: 0 !important;
+}
+
+#lightBox div.counter {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 3px 14px;
+  border-radius: 3px;
+  backdrop-filter: blur(10px);
+  color: white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 /* Style contact modal */
