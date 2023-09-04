@@ -1,97 +1,105 @@
-// eslint-disable-next-line import/prefer-default-export
-export function photographerTemplate(data) {
-  const { city, country, id, name, portrait, price, tagline } = data;
+export default class Photographers {
+  constructor(data) {
+    this.city = data.city;
+    this.country = data.country;
+    this.id = data.id;
+    this.name = data.name;
+    this.portrait = data.portrait;
+    this.price = data.price;
+    this.tagline = data.tagline;
+    this.picture = `./assets/photographers/${data.portrait}`;
+    this.url = `./photographer.html?id=${this.id}`;
+  }
 
-  const picture = `assets/photographers/${portrait}`;
-  const url = `./photographer.html?id=${id}`;
-
-  const getUserCardDOM = () => {
-    // Create an article
+  getUserCardDOM() {
     const article = document.createElement("article");
     article.setAttribute(
       "aria-label",
       "Carte de présentation d'un photographe.",
     );
-    // create header width h2 & img as link
+
+    /* ***** header creation width h2 & img as link ***** */
     const header = document.createElement("div");
     header.setAttribute("class", "card--header");
-
     const link = document.createElement("a");
-    link.setAttribute("href", url);
+    link.setAttribute("href", this.url);
     link.setAttribute("aria-label", "Redirection vers la page du photographe.");
-
-    const img = document.createElement("img");
-    img.setAttribute("src", picture);
-    img.setAttribute("alt", "Photo de profil du photographe");
-
-    const h2 = document.createElement("h2");
-    h2.textContent = name;
-    h2.setAttribute("aria-label", "Nom du photographe");
-
-    link.appendChild(img);
-    link.appendChild(h2);
+    // profil picture choiced by the photographer
+    const profilPic = document.createElement("img");
+    profilPic.setAttribute("src", this.picture);
+    profilPic.setAttribute("alt", "Photo de profil du photographe");
+    // photographer's name
+    const phName = document.createElement("h2");
+    phName.textContent = this.name;
+    phName.setAttribute("aria-label", "Prénom du photographe");
+    // add elmts in header
+    link.appendChild(profilPic);
+    link.appendChild(phName);
     header.appendChild(link);
 
-    // create body
+    /* ***** create body's card ***** */
     const body = document.createElement("div");
     body.setAttribute("class", "card--body");
     body.setAttribute(
       "aria-label",
       "Description des services proposés pas le photograohe.",
     );
-
+    // photographer's geolocation
     const location = document.createElement("h3");
-    location.textContent = `${city},${country}`;
+    location.textContent = `${this.city}, ${this.country}`;
     location.setAttribute("aria-label", "Localisation du photographe");
-
+    // photographer's citation
     const citation = document.createElement("p");
     citation.setAttribute("class", "citation");
-    citation.textContent = tagline;
+    citation.textContent = this.tagline;
     citation.setAttribute("aria-label", "Citation choisi par le photographe");
-
+    // photographer's citation
     const rate = document.createElement("p");
     rate.setAttribute("class", "rate");
-    rate.textContent = `${price}€/jour`;
+    rate.textContent = `${this.price}€/jour`;
     rate.setAttribute("aria-label", "Tarification journalière");
-
+    // add elmt in body
     body.appendChild(location);
     body.appendChild(citation);
     body.appendChild(rate);
 
+    /* ***** article constructor ***** */
     article.appendChild(header);
     article.appendChild(body);
 
-    // return template
+    // return article
+    console.log(article);
     return article;
-  };
+  }
 
-  function getProfilCardDOM() {
+  getProfilCardDOM() {
+    /* ***** Create profil's description ***** */
     const description = document.createElement("div");
     description.setAttribute("class", "profil-description");
+    // photographer's name
+    const phName = document.createElement("h2");
+    phName.textContent = this.name;
+    // photographer's location
+    const phLocation = document.createElement("h3");
+    phLocation.textContent = `${this.city}, ${this.country}`;
+    // photographer's citation
+    const phTagline = document.createElement("p");
+    phTagline.textContent = this.tagline;
+    // add elmts in description block
+    description.appendChild(phName);
+    description.appendChild(phLocation);
+    description.appendChild(phTagline);
 
-    const nameH2 = document.createElement("h2");
-    nameH2.textContent = name;
-
-    const locationH3 = document.createElement("h3");
-    locationH3.textContent = `${city}, ${country}`;
-
-    const taglineP = document.createElement("p");
-    taglineP.textContent = tagline;
-
-    description.appendChild(nameH2);
-    description.appendChild(locationH3);
-    description.appendChild(taglineP);
-
+    /* ***** create contact button ***** */
     const contactBtn = document.createElement("button");
     contactBtn.textContent = "Contactez-moi";
     contactBtn.setAttribute("class", "contact_button");
     contactBtn.setAttribute("onclick", "displayModal()");
 
+    /* ***** create the profil picture elmt ***** */
     const profilPicImg = document.createElement("img");
-    profilPicImg.setAttribute("src", picture);
+    profilPicImg.setAttribute("src", this.picture);
 
     return { description, contactBtn, profilPicImg };
   }
-
-  return { getUserCardDOM, getProfilCardDOM };
 }

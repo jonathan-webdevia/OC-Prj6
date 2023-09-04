@@ -1,14 +1,12 @@
-// eslint-disable-next-line import/extensions
 import { getPhotographers } from "../utils/getJsonData.js";
-// eslint-disable-next-line import/extensions
-import { photographerTemplate } from "../templates/photographers.js";
+import Photographers from "../templates/Photographers.js";
 
 // display photographers data
 async function displayData(photographers) {
   const photographersSection = document.querySelector(".photographer_section");
   // research template foreach photographer
   photographers.forEach((photographer) => {
-    const photographerModel = photographerTemplate(photographer);
+    const photographerModel = new Photographers(photographer);
     const userCardDOM = photographerModel.getUserCardDOM();
     photographersSection.appendChild(userCardDOM);
   });

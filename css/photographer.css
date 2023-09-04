@@ -1,3 +1,9 @@
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  padding-bottom: 80px;
+}
+
 .totalLikesAndPrice {
   display: flex;
   justify-content: space-between;
@@ -18,6 +24,12 @@
 
 .totalLikesAndPrice i {
   color: #901c1c;
+}
+
+body.modal {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 main header {
@@ -50,10 +62,19 @@ main header img {
 
 /* style media container */
 .media-container {
+  position: relative;
+  padding-top: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin: 80px 100px;
   gap: 70px;
+}
+
+.media select {
+  width: 300px;
+  height: 50px;
+  margin-left: 140px;
+  margin-top: 60px;
 }
 
 .media-container article {
@@ -167,6 +188,14 @@ main header img {
 /* Style contact modal */
 #contact_modal {
   display: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  top: 0;
+  backdrop-filter: blur(15px);
+  z-index: 101;
+  overflow: scroll;
 }
 
 .contact_button {
@@ -191,7 +220,7 @@ main header img {
   align-items: center;
   justify-content: space-between;
   padding: 35px;
-  margin: auto;
+  margin: 100px auto;
 }
 
 .modal header {
@@ -234,4 +263,27 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+}
+
+form textarea {
+  width: 100%;
+  height: 148px;
+  border: none;
+  border-radius: 5px;
+}
+
+.formData[data-error]::after {
+  content: attr(data-error);
+  color: #e54858;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  line-height: 0.3;
+  transition: 0.3s;
+  opacity: 0;
+}
+
+.formData[data-errorVisible="true"]::after {
+  opacity: 1;
 }

@@ -1,5 +1,8 @@
 // eslint-disable-next-line import/prefer-default-export
-export async function getPhotographers() {
+export async function getPhotographers(id) {
+  // variables define
+  let photographersList = null;
+  let mediaList = null;
   // Data restore
   return fetch("../../data/photographers.json")
     .then((response) => {
@@ -9,8 +12,13 @@ export async function getPhotographers() {
       return response.json();
     })
     .then((photographers) => {
-      const photographersList = photographers.photographers;
-      const mediaList = photographers.media;
+      if(id) {
+        photographersList = photographers.photographers.filter((data) => data.id === parseInt(id, 10));
+        mediaList = photographers.media.filter((data) => data.photographerId === parseInt(id, 10));
+      } else {
+        photographersList = photographers.photographers;
+        mediaList = null;
+      }
       return {
         photographersList,
         mediaList

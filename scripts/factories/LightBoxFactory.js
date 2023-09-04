@@ -1,50 +1,58 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable import/extensions */
 import ImageFactory from "./ImageFactory.js";
 import VideoFactory from "./videoFactory.js";
 
 export default class LightBoxFactory {
-  render(objects, index, photographerName) {
+  render(objects, index, phName) {
+    const folderName = phName.split(" ")[0];
+    const src = `../../assets/images/${folderName}/`;
 
-    const folderName = (photographerName.split(' ')[0]);
-    const src = `../../assets/images/${  folderName}/`;
+    /* ***** control lightBox ***** */
+    let currentIndex = index;
+    const previousBtn = document.querySelector(".previously");
+    const nextBtn = document.querySelector(".nextly");
 
-    let i = index;
-    let counterIndex = index + 1;
-    const previously = document.querySelector("#lightBox .previously");
-    const nextly = document.querySelector("#lightBox .nextly");
-
-    this.createElmt(objects[i], src, counterIndex, objects.length);
-
-    previously.addEventListener("click", () => {
-      if (i === 0) {
-        i = objects.length - 1;
-        counterIndex = i;
-      } else {
-        i--;
-        counterIndex -= 1;
+    const lightBox = (i) => {
+      let factory = null;
+      if (objects[i].image) {
+        factory = new ImageFactory(objects[i], i);
+      } else if (objects[i].video) {
+        factory = new VideoFactory(objects[i], i);
       }
-      this.createElmt(objects[i], src, counterIndex, objects.length);
-    });
-    nextly.addEventListener("click", () => {
-      if (i === objects.length - 1) {
-        i = 0;
-        counterIndex = 1;
-      } else {
-        i++;
-        counterIndex += 1;
-      }
-      this.createElmt(objects[i], src, counterIndex, objects.length);
-    });
-  }
+      factory.createLightBoxElmt(src, objects.length);
+    };
 
-  createElmt(object, src, i, total) {
-    let factory = null;
-    if (object.image) {
-      factory = new ImageFactory();
-    } else if (object.video) {
-      factory = new VideoFactory();
-    }
-    factory.createLightBoxElmt(object, src, i, total);
+    const nextly = () => {
+      currentIndex++;
+      if (currentIndex === objects.length) {
+        currentIndex = 0;
+      }
+      lightBox(currentIndex);
+    };
+
+    const previously = () => {
+      currentIndex--;
+      if (currentIndex < 0) {
+        currentIndex = objects.length - 1;
+      }
+      lightBox(currentIndex);
+    };
+
+    /* ***** event checking ***** */
+    nextBtn.addEventListener("click", nextly);
+    previousBtn.addEventListener("click", previously);
+    window.addEventListener("keydown", (event) => {
+      // lightBox controller
+      if (event.code === "ArrowRight") {
+        nextly();
+      } else if (event.code === "ArrowLeft") {
+        previously();
+      }
+      // close lightBox
+      if (event.code === "Escape") {
+        const lightbox = document.querySelector("#lightBox");
+        lightbox.style.display = "none";
+      }
+    });
+    lightBox(currentIndex);
   }
 }
