@@ -1,5 +1,5 @@
-import ImageFactory from "./ImageFactory.js";
-import VideoFactory from "./videoFactory.js";
+import ImageFactory from "../templates/Images.js";
+import VideoFactory from "../templates/Video.js";
 
 export default class LightBoxFactory {
   render(objects, index, phName) {

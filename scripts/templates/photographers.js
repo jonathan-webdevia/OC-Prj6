@@ -68,7 +68,6 @@ export default class Photographers {
     article.appendChild(body);
 
     // return article
-    console.log(article);
     return article;
   }
 
