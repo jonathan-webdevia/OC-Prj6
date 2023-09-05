@@ -1,27 +1,46 @@
-// eslint-disable-next-line import/extensions
-import LikesFactory from "../factories/LikesFactory.js";
+const liker = (price) => {
+  /* ***** Select DOM elmts **** */
+  const likerBtns = document.querySelectorAll(".liker");
+  const likesPriceDOM = document.querySelector(".totalLikesAndPrice");
 
-const likesProcess = async (dailyPrice) => {
-  // likes counter
-  const likesCounter = async () => {
-    const main = document.querySelector("main");
-    const elements = document.querySelectorAll(".nbrLikes");
-    const factory = new LikesFactory();
-    const totalLikes = factory.totalLikesCounter(elements, dailyPrice);
-    main.appendChild(totalLikes);
-  };
-  likesCounter();
-  // like click event
-  const likeButtons = document.querySelectorAll("button.liker");
-  likeButtons.forEach((element) => {
-    element.addEventListener("click", () => {
-      const factory = new LikesFactory();
-      factory.likeSystem(element);
-      likesCounter();
+  /* ***** className that will change heart's type ***** */
+  const likeClass = "fa-solid fa-heart";
+  const unlikeClass = "fa-regular fa-heart";
+
+  /* ***** create likes counter var ***** */
+  let totalLikes = null;
+
+  /* ***** Create the DOM elmts ***** */
+  const likesAndPriceDOM = (likesSUM) => `<div class="likesCounter">
+                                            <span>${likesSUM}</span> 
+                                            <i class="fa-solid fa-heart"></i>
+                                          </div>
+                                          <div>
+                                            ${price}€ / jour
+                                          </div>`;
+
+  /* ***** browse the nodelist and update the DOM ***** */
+  likerBtns.forEach((likerBtn) => {
+    const likeContainer = likerBtn.closest("p").firstChild;
+    let nbrLikesMedia = parseInt(likeContainer.textContent, 10);
+    totalLikes += nbrLikesMedia;
+    likerBtn.addEventListener("click", () => {
+      if (likerBtn.dataset.like === "false") {
+        likerBtn.setAttribute("data-like", "true");
+        likerBtn.firstChild.setAttribute("class", likeClass);
+        nbrLikesMedia++;
+        totalLikes++;
+      } else if (likerBtn.dataset.like === "true") {
+        likerBtn.setAttribute("data-like", "false");
+        likerBtn.firstChild.setAttribute("class", unlikeClass);
+        nbrLikesMedia--;
+        totalLikes--;
+      }
+      likeContainer.textContent = nbrLikesMedia;
+      likesPriceDOM.innerHTML = likesAndPriceDOM(totalLikes);
     });
   });
-  // display total likes
+  likesPriceDOM.innerHTML = likesAndPriceDOM(totalLikes);
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export { likesProcess };
+export default liker;

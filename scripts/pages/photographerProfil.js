@@ -8,7 +8,7 @@ const photographerId = urlDatas.get("id");
 // import utils functons
 import { displayData } from "../functions/displayData.js";
 import { displayMedia } from "../functions/displayMedia.js";
-import { likesProcess } from "../functions/likesProcess.js";
+import liker from "../functions/likesProcess.js";
 import { lightBoxProcess } from "../functions/lightBoxProcess.js";
 
 const init = async () => {
@@ -23,7 +23,9 @@ const init = async () => {
   await displayData(photographersList[0]);
   await displayMedia(mediaList, photographer.name);
   await lightBoxProcess(mediaList, photographer.name);
-  await likesProcess(photographer.price);
+
+  liker(photographer.price);
+  // await likesProcess(photographer.price);
 };
 
 init();
