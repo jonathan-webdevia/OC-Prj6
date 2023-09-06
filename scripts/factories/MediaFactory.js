@@ -1,5 +1,5 @@
-import ImageFactory from "../templates/Images.js";
-import VideoFactory from "../templates/Video.js";
+import Image from "../templates/Images.js";
+import Video from "../templates/Video.js";
 
 export default class MediaFactory {
   render(object, photographerName) {
@@ -9,10 +9,10 @@ export default class MediaFactory {
     let factory = null;
     /* ***** test media type ***** */
     if (object.image) {
-      factory = new ImageFactory(object);
+      factory = new Image(object);
     }
     if (object.video) {
-      factory = new VideoFactory(object);
+      factory = new Video(object);
     }
     /* ***** return and object ***** */
     return factory.createGalleryElmt(src);

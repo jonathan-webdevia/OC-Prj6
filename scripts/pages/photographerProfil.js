@@ -10,6 +10,7 @@ import { displayData } from "../functions/displayData.js";
 import { displayMedia } from "../functions/displayMedia.js";
 import liker from "../functions/likesProcess.js";
 import { lightBoxProcess } from "../functions/lightBoxProcess.js";
+import sort from "../functions/sort.js";
 
 const init = async () => {
   // data import
@@ -25,7 +26,8 @@ const init = async () => {
   await lightBoxProcess(mediaList, photographer.name);
 
   liker(photographer.price);
-  // await likesProcess(photographer.price);
+  sort(mediaList, photographer.name, photographer.price);
+  
 };
 
 init();

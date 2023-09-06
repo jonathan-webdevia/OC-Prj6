@@ -16,6 +16,7 @@ export default class ImageFactory {
     img.setAttribute("src", src + this.image);
     img.setAttribute("class", "lightBoxBtn");
     img.setAttribute("data-id", this.id);
+    img.setAttribute("alt", this.title);
 
     const imgDescription = document.createElement("div");
     imgDescription.setAttribute("class", "imgDescription");
@@ -65,12 +66,13 @@ export default class ImageFactory {
     const image = document.createElement("img");
     image.setAttribute("src", src + this.image);
     image.setAttribute("class", "mediabloc");
+    image.setAttribute("alt", this.title);
 
     const description = document.createElement("div");
     description.textContent = this.title;
 
     /* ***** add elmts in lightbox ***** */
-    mediaLightbox.appendChild(counter)
+    mediaLightbox.appendChild(counter);
     mediaLightbox.appendChild(image);
     mediaLightbox.appendChild(description);
   }

@@ -2,6 +2,7 @@ import MediaFactory from "../factories/MediaFactory.js";
 
 const displayMedia = async (medias, photographerName) => {
   const mediaContainer = document.querySelector(".media-container");
+  mediaContainer.innerHTML = "";
   const galleryRender = (objects) => {
     objects.forEach((object) => {
       const galleryBuilder = new MediaFactory();

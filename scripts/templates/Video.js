@@ -11,11 +11,12 @@ export default class VideoFactory {
   createGalleryElmt(src) {
     // create the HTML element
     const article = document.createElement("article");
-    
+
     const media = document.createElement("video");
     media.setAttribute("id", "video");
     media.setAttribute("class", "lightBoxBtn");
-    media.setAttribute("data-id", this.id)
+    media.setAttribute("data-id", this.id);
+    media.setAttribute("alt", this.title);
 
     const source = document.createElement("source");
     source.setAttribute("src", src + this.video);
@@ -24,12 +25,13 @@ export default class VideoFactory {
 
     const imgDescription = document.createElement("div");
     imgDescription.setAttribute("class", "imgDescription");
+    imgDescription.setAttribute("aria-label", "description de l'image");
 
     const titleP = document.createElement("p");
     titleP.textContent = this.title;
 
     const likesP = document.createElement("p");
-    
+
     const nbrLikes = document.createElement("span");
     nbrLikes.setAttribute("class", "nbrLikes");
     nbrLikes.textContent = this.likes;
@@ -39,10 +41,10 @@ export default class VideoFactory {
     button.setAttribute("class", "liker");
     button.setAttribute("data-id", this.id);
     button.setAttribute("data-like", false);
-  
+
     const heart = document.createElement("i");
     heart.setAttribute("class", "fa-regular fa-heart");
-    button.appendChild(heart)
+    button.appendChild(heart);
 
     likesP.appendChild(nbrLikes);
     likesP.appendChild(button);
@@ -64,13 +66,14 @@ export default class VideoFactory {
     /* ***** add a counter ***** */
     const counter = document.createElement("div");
     counter.setAttribute("class", "counter");
-    counter.textContent = `${this.index + 1  }/${  counterLength}`;
+    counter.textContent = `${this.index + 1}/${counterLength}`;
 
     /* ***** create the elmt video ***** */
     const video = document.createElement("video");
     video.setAttribute("class", "mediabloc");
     video.setAttribute("autoplay", "true");
     video.setAttribute("muted", "true");
+    video.setAttribute("alt", this.title);
     // add a src at video
     const source = document.createElement("source");
     source.setAttribute("src", src + this.video);
@@ -79,9 +82,10 @@ export default class VideoFactory {
 
     const description = document.createElement("div");
     description.textContent = this.title;
+    description.setAttribute("aria-label", "description de la video");
 
     /* ***** add elmts in lightbox ***** */
-    mediaLightbox.appendChild(counter)
+    mediaLightbox.appendChild(counter);
     mediaLightbox.appendChild(video);
     mediaLightbox.appendChild(description);
   }

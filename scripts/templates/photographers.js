@@ -21,14 +21,14 @@ export default class Photographers {
     /* ***** header creation width h2 & img as link ***** */
     const header = document.createElement("div");
     header.setAttribute("class", "card--header");
-    header.setAttribute("aria-label", "Photo et nom du photogarphe")
+    header.setAttribute("aria-label", "Photo et nom du photogarphe");
     const link = document.createElement("a");
     link.setAttribute("href", this.url);
     link.setAttribute("aria-label", "Redirection vers la page du photographe.");
     // profil picture choiced by the photographer
     const profilPic = document.createElement("img");
     profilPic.setAttribute("src", this.picture);
-    profilPic.setAttribute("alt", "Photo de profil du photographe");
+    profilPic.setAttribute("alt", this.name);
     // photographer's name
     const phName = document.createElement("h2");
     phName.textContent = this.name;
@@ -76,7 +76,10 @@ export default class Photographers {
     /* ***** Create profil's description ***** */
     const description = document.createElement("div");
     description.setAttribute("class", "profil-description");
-    description.setAttribute("aria-label", "Description du profil du photographe")
+    description.setAttribute(
+      "aria-label",
+      "Description du profil du photographe",
+    );
     // photographer's name
     const phName = document.createElement("h2");
     phName.textContent = this.name;
@@ -96,12 +99,12 @@ export default class Photographers {
     contactBtn.textContent = "Contactez-moi";
     contactBtn.setAttribute("class", "contact_button");
     contactBtn.setAttribute("onclick", "displayModal()");
-    contactBtn.setAttribute("aria-label", "Bouton de contact")
+    contactBtn.setAttribute("aria-label", "Bouton de contact");
 
     /* ***** create the profil picture elmt ***** */
     const profilPicImg = document.createElement("img");
     profilPicImg.setAttribute("src", this.picture);
-    profilPicImg.setAttribute("alt", "Photo de profil")
+    profilPicImg.setAttribute("alt", this.name);
 
     return { description, contactBtn, profilPicImg };
   }
