@@ -76,6 +76,7 @@ export default class Photographers {
     /* ***** Create profil's description ***** */
     const description = document.createElement("div");
     description.setAttribute("class", "profil-description");
+    description.setAttribute("aria-label", "Description du profil du photographe")
     // photographer's name
     const phName = document.createElement("h2");
     phName.textContent = this.name;
@@ -95,10 +96,12 @@ export default class Photographers {
     contactBtn.textContent = "Contactez-moi";
     contactBtn.setAttribute("class", "contact_button");
     contactBtn.setAttribute("onclick", "displayModal()");
+    contactBtn.setAttribute("aria-label", "Bouton de contact")
 
     /* ***** create the profil picture elmt ***** */
     const profilPicImg = document.createElement("img");
     profilPicImg.setAttribute("src", this.picture);
+    profilPicImg.setAttribute("alt", "Photo de profil")
 
     return { description, contactBtn, profilPicImg };
   }
