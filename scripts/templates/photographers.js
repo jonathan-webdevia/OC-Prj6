@@ -21,6 +21,7 @@ export default class Photographers {
     /* ***** header creation width h2 & img as link ***** */
     const header = document.createElement("div");
     header.setAttribute("class", "card--header");
+    header.setAttribute("aria-label", "Photo et nom du photogarphe")
     const link = document.createElement("a");
     link.setAttribute("href", this.url);
     link.setAttribute("aria-label", "Redirection vers la page du photographe.");
@@ -42,7 +43,7 @@ export default class Photographers {
     body.setAttribute("class", "card--body");
     body.setAttribute(
       "aria-label",
-      "Description des services proposés pas le photograohe.",
+      "Description des services proposés pas le photographe.",
     );
     // photographer's geolocation
     const location = document.createElement("h3");
