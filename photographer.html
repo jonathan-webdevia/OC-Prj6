@@ -22,12 +22,27 @@
         aria-label="Profil du photographe"
       ></header>
       <section class="media" aria-label="Gallery">
-        <label for="tri">Trier par : </label>
-        <select name="tri" id="tri">
-          <option value="" disabled selected>Trier par</option>
-          <option value="title">Titre</option>
-          <option value="likes">Les + aimées</option>
-        </select>
+        <div class="sortSelector" aria-label="Système detri des médias">
+          <strong>Trier par :</strong>
+          <div class="label">Date</div>
+          <ul>
+            <li class="btnContainer">
+              <button data-sort="date" data-label="Date" type="button">
+                Date
+              </button>
+            </li>
+            <li class="btnContainer">
+              <button data-sort="likes" data-label="Popularité" type="button">
+                Popularité
+              </button>
+            </li>
+            <li class="btnContainer">
+              <button data-sort="title" data-label="Titre" type="button">
+                Titre
+              </button>
+            </li>
+          </ul>
+        </div>
         <div class="media-container" aria-label="medias"></div>
       </section>
       <section id="lightBox" aria-label="Contiens le média à afficher">

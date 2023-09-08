@@ -70,15 +70,105 @@ main header img {
   gap: 70px;
 }
 
-.media select {
-  width: 300px;
-  height: 50px;
-  margin-left: 140px;
-  margin-top: 60px;
+.media .sortSelector {
+  width: max-content;
+  margin-left: 100px;
+  position: relative;
+  margin-top: 30px;
 }
 
-.media-container article {
+.media .sortSelector strong {
+  display: inline-block;
+  width: 80px;
+}
+
+.media .sortSelector .label {
+  width: 170px;
+  height: 69px;
+  line-height: 69px;
+  background-color: #901c1c;
+  font-size: 1.2em;
+  color: white;
+  cursor: pointer;
+  padding: 0 22px;
+  position: relative;
+  border-radius: 10px;
+  z-index: 101;
+  transition: 500ms;
+  display: inline-block;
+}
+
+.media .sortSelector .label.active {
+  border-radius: 10px 10px 0 0;
+  transition: 500ms;
+}
+
+.media .sortSelector ul {
+  width: 214px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: absolute;
+  opacity: 0;
+  top: -4px;
+  left: 84px;
+  z-index: 100;
+  transition: 1000ms;
+  border-radius: 0 0 10px 10px;
+}
+
+.media .sortSelector ul.active {
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+  animation-name: selector;
+}
+
+.media .sortSelector ul.unactive {
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
+  animation-name: unselect;
+}
+
+@keyframes selector {
+  0% {
+    top: -4px;
+    opacity: 0;
+  }
+  100% {
+    top: 69px;
+    opacity: 1;
+  }
+}
+
+@keyframes unselect {
+  from {
+    top: 69px;
+    opacity: 1;
+  }
+  to {
+    top: -4px;
+    opacity: 0;
+  }
+}
+
+.media .sortSelector ul li {
+  width: 100%;
+  background-color: #901c1c;
   padding: 0 20px;
+  border: 2px solid #901c1c;
+}
+
+.media .sortSelector button {
+  width: 170px;
+  height: 69px;
+  background-color: transparent;
+  border: none;
+  border-top: 2px solid white;
+  font-size: 1.2em;
+  color: white;
+  text-align: left;
   cursor: pointer;
 }
 
