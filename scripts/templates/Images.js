@@ -11,12 +11,18 @@ export default class ImageFactory {
   createGalleryElmt(src) {
     // create the HTML element
     const article = document.createElement("article");
+    article.setAttribute("aria-label", this.image)
 
+    const oppenLBBtn = document.createElement("button");
+    oppenLBBtn.setAttribute("aria-label", this.image)
+    oppenLBBtn.setAttribute("class", "lightBoxBtn");
+    oppenLBBtn.setAttribute("data-id", this.id);
+    
     const img = document.createElement("img");
     img.setAttribute("src", src + this.image);
-    img.setAttribute("class", "lightBoxBtn");
-    img.setAttribute("data-id", this.id);
     img.setAttribute("alt", this.title);
+
+    oppenLBBtn.appendChild(img);
 
     const imgDescription = document.createElement("div");
     imgDescription.setAttribute("class", "imgDescription");
@@ -46,7 +52,7 @@ export default class ImageFactory {
     imgDescription.appendChild(titleP);
     imgDescription.appendChild(likesP);
 
-    article.appendChild(img);
+    article.appendChild(oppenLBBtn);
     article.appendChild(imgDescription);
 
     return article;

@@ -22,9 +22,12 @@
         aria-label="Profil du photographe"
       ></header>
       <section class="media" aria-label="Gallery">
-        <div class="sortSelector" aria-label="Système detri des médias">
+        <div class="sortSelector">
           <strong>Trier par :</strong>
-          <div class="label">Date</div>
+          <div class="label">
+            <span class="value">Date</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
           <ul>
             <li class="btnContainer">
               <button data-sort="date" data-label="Date" type="button">
@@ -43,21 +46,23 @@
             </li>
           </ul>
         </div>
-        <div class="media-container" aria-label="medias"></div>
+        <div class="media-container"></div>
       </section>
       <section id="lightBox" aria-label="Contiens le média à afficher">
         <button
-          type="button control"
+          type="button"
           class="mediaClose"
           aria-label="bouton de fermeture de modal"
         >
           <em class="fa-solid fa-xmark"></em>
         </button>
         <button class="previously control" aria-label="media précédent">
-          <
+          <em class="fa-solid fa-chevron-left"></em>
         </button>
         <div class="media" aria-label="media"></div>
-        <button class="nextly control" aria-label="media suivant">></button>
+        <button class="nextly control" aria-label="media suivant">
+          <em class="fa-solid fa-chevron-right"></em>
+        </button>
       </section>
       <section
         class="totalLikesAndPrice"

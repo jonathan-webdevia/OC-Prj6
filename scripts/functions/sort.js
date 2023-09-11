@@ -7,13 +7,20 @@ const sort = (mediaList, photographerName, PhotographerPrice) => {
 
   /* ***** recovery DOM elmts ***** */
   const label = document.querySelector(".sortSelector .label");
+  const labelValue = document.querySelector(".sortSelector .label .value");
+  const chevron = document.querySelector(".sortSelector .label i");
   const selectorList = document.querySelector(".sortSelector ul");
   const selectBtn = document.querySelectorAll(".media .sortSelector button");
 
   /* ***** check label's event click to deploy the selectors ***** */
   label.addEventListener("click", () => {
+    if(chevron.classList.contains("active")) {
+      chevron.classList.remove("active")
+    } else {
+      chevron.classList.add("active")
+    }   
     selectBtn.forEach((button) => {
-      if (button.dataset.label === label.textContent) {
+      if (button.dataset.label === labelValue.textContent) {
         const invisible = button.closest(".btnContainer");
         invisible.style.display = "none";
       } else {
@@ -38,7 +45,7 @@ const sort = (mediaList, photographerName, PhotographerPrice) => {
   selectBtn.forEach((button) => {
     button.addEventListener("click", () => {
       /* **** change the label elmt ***** */
-      label.textContent = button.dataset.label;
+      labelValue.textContent = button.dataset.label;
 
       const selectedValue = button.dataset.sort;
       let newList = null;

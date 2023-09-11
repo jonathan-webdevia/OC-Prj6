@@ -75,14 +75,18 @@ main header img {
   margin-left: 100px;
   position: relative;
   margin-top: 30px;
+  display: flex;
+  align-items: center;
 }
 
 .media .sortSelector strong {
-  display: inline-block;
   width: 80px;
 }
 
 .media .sortSelector .label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   width: 170px;
   height: 69px;
   line-height: 69px;
@@ -95,12 +99,22 @@ main header img {
   border-radius: 10px;
   z-index: 101;
   transition: 500ms;
-  display: inline-block;
+  align-items: center;
 }
 
 .media .sortSelector .label.active {
   border-radius: 10px 10px 0 0;
   transition: 500ms;
+}
+
+.media .sortSelector .label i {
+  transform: rotate(0deg);
+  transition: 1000ms;
+}
+
+.media .sortSelector .label i.active {
+  transform: rotate(180deg);
+  transition: 1000ms;
 }
 
 .media .sortSelector ul {
@@ -113,7 +127,7 @@ main header img {
   position: absolute;
   opacity: 0;
   top: -4px;
-  left: 84px;
+  left: 80px;
   z-index: 100;
   transition: 1000ms;
   border-radius: 0 0 10px 10px;
@@ -172,6 +186,14 @@ main header img {
   cursor: pointer;
 }
 
+.media-container article > button {
+  width: 100%;
+  display: block;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+}
+
 .media-container article img,
 .media-container article video {
   width: 100%;
@@ -179,6 +201,7 @@ main header img {
   object-fit: cover;
   border-radius: 5px;
   transition: 500ms;
+  cursor: pointer;
 }
 
 .media-container article img:hover,
@@ -236,7 +259,7 @@ main header img {
   padding: 0 20px;
   background-color: rgba(0, 0, 0, 0);
   color: #901c1c;
-  background-color: none;
+  background-color: unset;
   border: none;
   cursor: pointer;
   text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
