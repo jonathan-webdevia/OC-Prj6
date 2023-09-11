@@ -11,17 +11,23 @@ export default class VideoFactory {
   createGalleryElmt(src) {
     // create the HTML element
     const article = document.createElement("article");
+    article.setAttribute("aria-label", this.video);
+
+    const oppenLBBtn = document.createElement("button");
+    oppenLBBtn.setAttribute("aria-label", this.image)
+    oppenLBBtn.setAttribute("class", "lightBoxBtn");
+    oppenLBBtn.setAttribute("data-id", this.id);
 
     const media = document.createElement("video");
     media.setAttribute("id", "video");
-    media.setAttribute("class", "lightBoxBtn");
-    media.setAttribute("data-id", this.id);
     media.setAttribute("alt", this.title);
 
     const source = document.createElement("source");
     source.setAttribute("src", src + this.video);
     source.setAttribute("type", "video/mp4");
     media.appendChild(source);
+
+    oppenLBBtn.appendChild(media);
 
     const imgDescription = document.createElement("div");
     imgDescription.setAttribute("class", "imgDescription");
@@ -52,7 +58,7 @@ export default class VideoFactory {
     imgDescription.appendChild(titleP);
     imgDescription.appendChild(likesP);
 
-    article.appendChild(media);
+    article.appendChild(oppenLBBtn);
     article.appendChild(imgDescription);
 
     return article;
