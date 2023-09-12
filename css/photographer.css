@@ -24,6 +24,7 @@ body {
 
 .totalLikesAndPrice i {
   color: #901c1c;
+  font-size: 6em;
 }
 
 body.modal {
@@ -214,6 +215,7 @@ main header img {
 .media-container article .imgDescription {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   color: #901c1c;
 }
 
@@ -223,6 +225,7 @@ main header img {
   padding: 0 5px;
   color: #901c1c;
   cursor: pointer;
+  font-size: 1.3em;
 }
 
 /* Style lightBox */

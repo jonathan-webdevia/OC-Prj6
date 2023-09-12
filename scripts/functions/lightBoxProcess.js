@@ -3,6 +3,7 @@ import LightBoxFactory from "../factories/LightBoxFactory.js";
 const lightBoxProcess = async (objects, photographerName) => {
   const articles = document.querySelectorAll(".media-container article .lightBoxBtn");
   const lightbox = document.querySelector("#lightBox");
+  const mediaCloseBtn = document.querySelector(".mediaClose");
   articles.forEach((article) => {
     article.addEventListener("click", () => {
       lightbox.style.display = "flex";
@@ -15,9 +16,10 @@ const lightBoxProcess = async (objects, photographerName) => {
       /* ***** lunch lightbox ***** */
       const lightBoxModel = new LightBoxFactory(objects, index);
       lightBoxModel.render(objects, index, photographerName);
+      mediaCloseBtn.focus();
     });
   });
-  const mediaCloseBtn = document.querySelector(".mediaClose");
+  
   mediaCloseBtn.addEventListener("click", () => {
     lightbox.style.display = "none";
   });

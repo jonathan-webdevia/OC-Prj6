@@ -5,7 +5,7 @@ const message = document.querySelector("#message");
 
 const txtRegex = /^[a-zA-Z]{2,}/;
 const mailRegex =
-  /^([a-zA-Z0-9.-_S]{2,})+[@]+([a-zA-Z0-9.-_S]{2,})+([.]{1})+([a-zA-Z]{2,10})/;
+  /^([a-zA-Z0-9._S-]{2,})+[@]+([a-zA-Z0-9._S-]{2,})+([.]{1})+([a-zA-Z]{2,10})/;
 const msgRegex = /^[a-zA-Z]{10,}/;
 
 function inputTest(input, regex) {
@@ -51,6 +51,7 @@ function validate(event) {
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "block";
+  first.focus();
 }
 
 // eslint-disable-next-line no-unused-vars
