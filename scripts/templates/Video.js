@@ -46,6 +46,7 @@ export default class VideoFactory {
     button.setAttribute("type", "button");
     button.setAttribute("class", "liker");
     button.setAttribute("data-id", this.id);
+    button.setAttribute("aria-label", "aimer la vidéo")
     button.setAttribute("data-like", false);
 
     const heart = document.createElement("i");

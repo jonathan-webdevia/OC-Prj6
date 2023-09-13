@@ -40,6 +40,7 @@ export default class ImageFactory {
     button.setAttribute("type", "button");
     button.setAttribute("class", "liker");
     button.setAttribute("data-id", this.id);
+    button.setAttribute("aria-label", "aimer l'image")
     button.setAttribute("data-like", false);
 
     const heart = document.createElement("i");
