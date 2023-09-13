@@ -28,13 +28,13 @@ const liker = (price) => {
       if (likerBtn.dataset.like === "false") {
         likerBtn.setAttribute("data-like", "true");
         likerBtn.firstChild.setAttribute("class", likeClass);
-        nbrLikesMedia++;
-        totalLikes++;
+        nbrLikesMedia += 1;
+        totalLikes += 1;
       } else if (likerBtn.dataset.like === "true") {
         likerBtn.setAttribute("data-like", "false");
         likerBtn.firstChild.setAttribute("class", unlikeClass);
-        nbrLikesMedia--;
-        totalLikes--;
+        nbrLikesMedia -= 1;
+        totalLikes -= 1;
       }
       likeContainer.textContent = nbrLikesMedia;
       likesPriceDOM.innerHTML = likesAndPriceDOM(totalLikes);

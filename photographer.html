@@ -14,7 +14,7 @@
   </head>
   <body>
     <header>
-      <a href="./index.html">
+      <a href="./index.html" class="redirection">
         <img src="assets/images/logo.png" alt="logo FishEyes" class="logo" />
       </a>
     </header>
@@ -78,10 +78,10 @@
           <img
             src="assets/icons/close.svg"
             alt="bouton de fermeture de modal"
-            onclick="closeModal()"
+            class="closingCross"
           />
         </header>
-        <form onsubmit="validate(event)">
+        <form class="contactForm">
           <div
             class="formData"
             data-error="Merci de saisir au moins 2 caractères"

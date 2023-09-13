@@ -1,7 +1,14 @@
+/* eslint-disable no-console */
+// ==> no error because we need console.logs()
+
 const first = document.querySelector("#first");
 const last = document.querySelector("#last");
 const mail = document.querySelector("#mail");
 const message = document.querySelector("#message");
+const resetFocus = document.querySelector("header a.redirection");
+const closingCross = document.querySelector(".closingCross")
+const modal = document.getElementById("contact_modal");
+const form = document.querySelector(".contactForm")
 
 const txtRegex = /^[a-zA-Z]{2,}/;
 const mailRegex =
@@ -32,6 +39,17 @@ message.addEventListener("change", () => {
 });
 
 // eslint-disable-next-line no-unused-vars
+function displayModal() {
+  modal.style.display = "block";
+  first.focus();
+}
+
+function closeModal() {
+  modal.style.display = "none";
+  resetFocus.focus();
+}
+
+// eslint-disable-next-line no-unused-vars
 function validate(event) {
   event.preventDefault();
   if (
@@ -44,25 +62,15 @@ function validate(event) {
     console.log(last.value);
     console.log(mail.value);
     console.log(message.value);
+    closeModal();
   }
 }
 
-// eslint-disable-next-line no-unused-vars
-function displayModal() {
-  const modal = document.getElementById("contact_modal");
-  modal.style.display = "block";
-  first.focus();
-}
-
-// eslint-disable-next-line no-unused-vars
-function closeModal() {
-  const modal = document.getElementById("contact_modal");
-  modal.style.display = "none";
-}
-
+form.addEventListener("submit", (event) => validate(event));
+closingCross.addEventListener("click", closeModal);
 window.addEventListener("keydown", (event) => {
   // close contactModal
   if (event.code === "Escape") {
-     closeModal()
+    closeModal();
   }
 });

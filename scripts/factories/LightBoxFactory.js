@@ -22,7 +22,7 @@ export default class LightBoxFactory {
     };
 
     const nextly = () => {
-      currentIndex++;
+      currentIndex += 1;
       if (currentIndex === objects.length) {
         currentIndex = 0;
       }
@@ -30,7 +30,7 @@ export default class LightBoxFactory {
     };
 
     const previously = () => {
-      currentIndex--;
+      currentIndex -= 1;
       if (currentIndex < 0) {
         currentIndex = objects.length - 1;
       }
@@ -40,6 +40,8 @@ export default class LightBoxFactory {
     /* ***** event checking ***** */
     nextBtn.addEventListener("click", nextly);
     previousBtn.addEventListener("click", previously);
+
+    const resetFocus = document.querySelector("header a.redirection");
     window.addEventListener("keydown", (event) => {
       // lightBox controller
       if (event.code === "ArrowRight") {
@@ -51,6 +53,7 @@ export default class LightBoxFactory {
       if (event.code === "Escape") {
         const lightbox = document.querySelector("#lightBox");
         lightbox.style.display = "none";
+        resetFocus.focus();
       }
     });
     lightBox(currentIndex);

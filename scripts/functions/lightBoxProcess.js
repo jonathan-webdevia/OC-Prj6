@@ -4,6 +4,7 @@ const lightBoxProcess = async (objects, photographerName) => {
   const articles = document.querySelectorAll(".media-container article .lightBoxBtn");
   const lightbox = document.querySelector("#lightBox");
   const mediaCloseBtn = document.querySelector(".mediaClose");
+  const resetFocus = document.querySelector("header a.redirection");
   articles.forEach((article) => {
     article.addEventListener("click", () => {
       lightbox.style.display = "flex";
@@ -22,6 +23,7 @@ const lightBoxProcess = async (objects, photographerName) => {
   
   mediaCloseBtn.addEventListener("click", () => {
     lightbox.style.display = "none";
+    resetFocus.focus();
   });
 };
 

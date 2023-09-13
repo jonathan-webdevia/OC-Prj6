@@ -8,7 +8,7 @@ const sort = (mediaList, photographerName, PhotographerPrice) => {
   /* ***** recovery DOM elmts ***** */
   const label = document.querySelector(".sortSelector .label");
   const labelValue = document.querySelector(".sortSelector .label .value");
-  const chevron = document.querySelector(".sortSelector .label i");
+  const chevron = document.querySelector(".sortSelector .label em");
   const selectorList = document.querySelector(".sortSelector ul");
   const selectBtn = document.querySelectorAll(".media .sortSelector button");
 

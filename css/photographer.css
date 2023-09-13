@@ -24,7 +24,6 @@ body {
 
 .totalLikesAndPrice i {
   color: #901c1c;
-  font-size: 6em;
 }
 
 body.modal {
@@ -108,12 +107,12 @@ main header img {
   transition: 500ms;
 }
 
-.media .sortSelector .label i {
+.media .sortSelector .label em {
   transform: rotate(0deg);
   transition: 1000ms;
 }
 
-.media .sortSelector .label i.active {
+.media .sortSelector .label em.active {
   transform: rotate(180deg);
   transition: 1000ms;
 }
@@ -378,6 +377,7 @@ form input {
   height: 68px;
   border: none;
   border-radius: 5px;
+  font-size: 1.2em;
 }
 
 form textarea {
@@ -385,6 +385,8 @@ form textarea {
   height: 148px;
   border: none;
   border-radius: 5px;
+  font-size: 1.4em;
+  padding: 10px;
 }
 
 .formData[data-error]::after {
